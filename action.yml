@@ -24,7 +24,7 @@ runs:
           <details>
           <summary>Object Attributes</summary>
 
-          \`\`\`
+          \`\`\`json
           ${contextAttrs}
           \`\`\`
 
