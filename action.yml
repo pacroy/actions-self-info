@@ -8,10 +8,28 @@ runs:
       shell: bash
       run: |
         #============================== Print Context Variables ==============================
+        { 
+          echo '# Context Variables'
+          echo
+        } >> "$GITHUB_STEP_SUMMARY"
+
         context_github='${{ toJSON(github) }}'
         echo '::group::github'
         echo "${context_github}"
         echo '::endgroup::'
+        {
+          cat <<EOF
+          <details>
+          <summary>context</summary>
+
+          \`\`\`json
+          $(echo "${context_github}")
+          \`\`\`
+
+          </details>
+
+          EOF
+        } >> "$GITHUB_STEP_SUMMARY"
 
         context_env='${{ toJSON(env) }}'
         echo '::group::env'
@@ -62,10 +80,10 @@ runs:
           core.info(contextAttrs)
           core.info('::endgroup::')
           await core.summary.addRaw(`
-          # context
+          # JavaScript Objects
 
           <details>
-          <summary>Object Attributes</summary>
+          <summary>context</summary>
 
           \`\`\`json
           ${contextAttrs}
