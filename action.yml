@@ -33,41 +33,14 @@ runs:
         } >> "$GITHUB_STEP_SUMMARY"
 
         print_variable 'github' '${{ toJSON(github) }}'
+        print_variable 'env' '${{ toJSON(env) }}'
+        print_variable 'job' '${{ toJSON(job) }}'
+        print_variable 'steps' '${{ toJSON(steps) }}'
+        print_variable 'runner' '${{ toJSON(runner) }}'
+        print_variable 'strategy' '${{ toJSON(strategy) }}'
+        print_variable 'matrix' '${{ toJSON(matrix) }}'
+        print_variable 'inputs' '${{ toJSON(inputs) }}'
 
-        context_env='${{ toJSON(env) }}'
-        echo '::group::env'
-        echo "${context_env}"
-        echo '::endgroup::'
-
-        context_job='${{ toJSON(job) }}'
-        echo '::group::job'
-        echo "${context_job}"
-        echo '::endgroup::'
-
-        context_steps='${{ toJSON(steps) }}'
-        echo '::group::steps'
-        echo "${context_steps}"
-        echo '::endgroup::'
-
-        context_runner='${{ toJSON(runner) }}'
-        echo '::group::runner'
-        echo "${context_runner}"
-        echo '::endgroup::'
-
-        context_strategy='${{ toJSON(strategy) }}'
-        echo '::group::strategy'
-        echo "${context_strategy}"
-        echo '::endgroup::'
-
-        context_matrix='${{ toJSON(matrix) }}'
-        echo '::group::matrix'
-        echo "${context_matrix}"
-        echo '::endgroup::'
-
-        context_inputs='${{ toJSON(inputs) }}'
-        echo '::group::inputs'
-        echo "${context_inputs}"
-        echo '::endgroup::'
     - name: 'Print JS Objects'
       uses: actions/github-script@v6
       with:
