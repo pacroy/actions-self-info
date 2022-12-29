@@ -23,7 +23,7 @@ runs:
           <summary>context</summary>
 
           \`\`\`json
-          $(echo "${context_github}")
+          $context_github
           \`\`\`
 
           </details>
