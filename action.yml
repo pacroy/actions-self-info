@@ -9,7 +9,7 @@ runs:
       run: |
         #============================== Print Context Variables ==============================
         function print_variable {
-          echo '::group::$1'
+          echo "::group::$1"
           echo "$2"
           echo '::endgroup::'
           {
