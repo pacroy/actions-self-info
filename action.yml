@@ -4,6 +4,23 @@ description: 'Display information about this composite action'
 runs:
   using: "composite"
   steps:
+    - name: 'Print Git Info'
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      continue-on-error: true
+      run: |
+        {
+        cat <<EOF
+        # Git Information
+
+        Command | Value
+        --- | ---
+        \`git rev-parse HEAD\` | \`$(git rev-parse HEAD)\`
+        \`git describe --always\` | \`$(git describe --always)\`
+
+        EOF
+        } >> "$GITHUB_STEP_SUMMARY"
+
     - name: 'Print Context Variables'
       shell: bash
       run: |
