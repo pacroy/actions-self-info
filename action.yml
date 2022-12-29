@@ -13,17 +13,17 @@ runs:
           echo "$2"
           echo '::endgroup::'
           {
-          cat <<EOF
-          <details>
-          <summary>$1</summary>
+        cat <<EOF
+        <details>
+        <summary>$1</summary>
 
-          \`\`\`json
-          $2
-          \`\`\`
+        \`\`\`json
+        $2
+        \`\`\`
 
-          </details>
+        </details>
 
-          EOF
+        EOF
           } >> "$GITHUB_STEP_SUMMARY"
         }
 
