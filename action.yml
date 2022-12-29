@@ -20,10 +20,10 @@ runs:
           # context
 
           <details>
-          <summary>context object attributes</summary>
+          <summary>Object Attributes</summary>
 
           \`\`\`
-          $(contextAttrs)
+          ${contextAttrs}
           \`\`\`
 
           </details>
