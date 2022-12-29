@@ -18,17 +18,17 @@ runs:
         echo "${context_github}"
         echo '::endgroup::'
         {
-          cat <<EOF
-          <details>
-          <summary>context</summary>
+        cat <<EOF
+        <details>
+        <summary>context</summary>
 
-          \`\`\`json
-          $context_github
-          \`\`\`
+        \`\`\`json
+        $context_github
+        \`\`\`
 
-          </details>
+        </details>
 
-          EOF
+        EOF
         } >> "$GITHUB_STEP_SUMMARY"
 
         context_env='${{ toJSON(env) }}'
