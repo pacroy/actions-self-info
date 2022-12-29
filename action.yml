@@ -16,7 +16,6 @@ runs:
         Command | Value
         --- | ---
         \`git rev-parse HEAD\` | \`$(git rev-parse HEAD)\`
-        \`git rev-parse HEAD~1\` | \`$(git rev-parse HEAD~1)\`
         \`git describe --always\` | \`$(git describe --always)\`
 
         EOF
