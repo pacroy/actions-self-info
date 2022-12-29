@@ -1,0 +1,11 @@
+name: 'Composite Action Info'
+description: 'Display information about this composite action'
+
+runs:
+  using: "composite"
+  steps: 
+    - name: 'Display Info'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          core.info(context)
