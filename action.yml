@@ -23,11 +23,6 @@ runs:
         echo "${context_job}"
         echo '::endgroup::'
 
-        context_jobs='${{ toJSON(jobs) }}'
-        echo '::group::jobs'
-        echo "${context_jobs}"
-        echo '::endgroup::'
-
         context_steps='${{ toJSON(steps) }}'
         echo '::group::steps'
         echo "${context_steps}"
