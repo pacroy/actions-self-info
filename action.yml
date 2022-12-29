@@ -1,0 +1,78 @@
+name: 'Composite Action Info'
+description: 'Display information about this composite action'
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Print Context Variables'
+      shell: bash
+      run: |
+        #============================== Print Context Variables ==============================
+        function print_variable {
+          echo "::group::$1"
+          echo "$2"
+          echo '::endgroup::'
+          {
+        cat <<EOF
+        <details>
+        <summary>$1</summary>
+
+        \`\`\`json
+        $2
+        \`\`\`
+
+        </details>
+
+        EOF
+          } >> "$GITHUB_STEP_SUMMARY"
+        }
+
+        { 
+          echo '# Context Variables'
+          echo
+        } >> "$GITHUB_STEP_SUMMARY"
+
+        print_variable 'github' '${{ toJSON(github) }}'
+        print_variable 'env' '${{ toJSON(env) }}'
+        print_variable 'job' '${{ toJSON(job) }}'
+        print_variable 'steps' '${{ toJSON(steps) }}'
+        print_variable 'runner' '${{ toJSON(runner) }}'
+        print_variable 'strategy' '${{ toJSON(strategy) }}'
+        print_variable 'matrix' '${{ toJSON(matrix) }}'
+        print_variable 'inputs' '${{ toJSON(inputs) }}'
+
+    - name: 'Print JS Objects'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          core.info('============================== Print JS Objects ==============================')
+          async function printObject(name, obj) {
+            const objectString = JSON.stringify(obj, null, 4)
+            core.info(`::group::${name}`)
+            core.info(objectString)
+            core.info('::endgroup::')
+
+            await core.summary.addRaw(`
+            <details>
+            <summary>${name}</summary>
+
+            \`\`\`json
+            ${objectString}
+            \`\`\`
+
+            </details>
+
+            `).write()
+          }
+
+          await core.summary.addRaw(`
+          # JavaScript Objects
+
+          `)
+
+          await printObject('github', github)
+          await printObject('context', context)
+          await printObject('core', core)
+          await printObject('glob', glob)
+          await printObject('io', io)
+          await printObject('exec', exec)

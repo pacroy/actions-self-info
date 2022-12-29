@@ -1,0 +1,18 @@
+name: 'Test Workflow'
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  happy_path:
+    name: 'Happy Path'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout self'
+        uses: actions/checkout@v3
+      - name: 'Call Action'
+        uses: './'
