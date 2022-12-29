@@ -27,7 +27,7 @@ runs:
           \`\`\`
 
           </details>
-          `)
+          `).write()
 
           core.info('::group::core')
           core.info(JSON.stringify(core, null, 4))
