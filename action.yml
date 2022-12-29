@@ -3,12 +3,19 @@ description: 'Display information about this composite action'
 
 runs:
   using: "composite"
-  steps: 
-    - name: 'Display Info'
+  steps:
+    - name: 'Print Context Variables'
+      shell: bash
+      run: |
+        #============================== Print Context Variables ==============================
+        echo '::group::github'
+        echo '${{ github }}'
+        echo '::endgroup::'
+    - name: 'Print JS Objects'
       uses: actions/github-script@v6
       with:
         script: |
-          core.info('============================== Display Info ==============================')
+          core.info('============================== Print JS Objects ==============================')
 
           core.info('::group::github')
           core.info(JSON.stringify(github, null, 4))
