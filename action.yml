@@ -48,13 +48,13 @@ runs:
           core.info('============================== Print JS Objects ==============================')
           async function printObject(name, obj) {
             const objectString = JSON.stringify(obj, null, 4)
-            core.info(`::group::${obj.constructor.name}`)
+            core.info(`::group::${name}`)
             core.info(objectString)
             core.info('::endgroup::')
 
             await core.summary.addRaw(`
             <details>
-            <summary>${obj.constructor.name}</summary>
+            <summary>${name}</summary>
 
             \`\`\`json
             ${objectString}
