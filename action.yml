@@ -17,6 +17,7 @@ runs:
         --- | ---
         \`git rev-parse HEAD\` | \`$(git rev-parse HEAD)\`
         \`git describe --always\` | \`$(git describe --always)\`
+        \`git rev-list --max-count=1 HEAD\` | \`$(git rev-list --max-count=1 HEAD)\`
 
         EOF
         } >> "$GITHUB_STEP_SUMMARY"
