@@ -23,11 +23,6 @@ runs:
         echo "${context_job}"
         echo '::endgroup::'
 
-        context_jobs='${{ toJSON(jobs) }}'
-        echo '::group::jobs'
-        echo "${context_jobs}"
-        echo '::endgroup::'
-
         context_steps='${{ toJSON(steps) }}'
         echo '::group::steps'
         echo "${context_steps}"
@@ -36,11 +31,6 @@ runs:
         context_runner='${{ toJSON(runner) }}'
         echo '::group::runner'
         echo "${context_runner}"
-        echo '::endgroup::'
-
-        context_secrets='${{ toJSON(secrets) }}'
-        echo '::group::secrets'
-        echo "${context_secrets}"
         echo '::endgroup::'
 
         context_strategy='${{ toJSON(strategy) }}'
