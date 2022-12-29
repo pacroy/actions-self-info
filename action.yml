@@ -8,6 +8,8 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
+          core.info('============================== Display Info ==============================')
+
           core.info('::group::github')
           core.info(JSON.stringify(github, null, 4))
           core.info('::endgroup::')
