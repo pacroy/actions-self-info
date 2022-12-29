@@ -8,4 +8,6 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-          core.info(`context: ${JSON.stringify(context, null, 4)}`)
+          core.info('::group::context')
+          core.info(JSON.stringify(context, null, 4))
+          core.info('::endgroup::')
