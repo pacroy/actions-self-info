@@ -43,11 +43,6 @@ runs:
         echo "${context_matrix}"
         echo '::endgroup::'
 
-        context_needs='${{ toJSON(needs) }}'
-        echo '::group::needs'
-        echo "${context_needs}"
-        echo '::endgroup::'
-
         context_inputs='${{ toJSON(inputs) }}'
         echo '::group::inputs'
         echo "${context_inputs}"
