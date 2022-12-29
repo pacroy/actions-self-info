@@ -46,7 +46,7 @@ runs:
       with:
         script: |
           core.info('============================== Print JS Objects ==============================')
-          async function printObject(obj) {
+          async function printObject(name, obj) {
             const objectString = JSON.stringify(obj, null, 4)
             core.info(`::group::${obj.constructor.name}`)
             core.info(objectString)
@@ -65,21 +65,14 @@ runs:
             `).write()
           }
 
-          await printObject(github)
-          await printObject(context)
+          await core.summary.addRaw(`
+          # JavaScript Objects
 
-          core.info('::group::core')
-          core.info(JSON.stringify(core, null, 4))
-          core.info('::endgroup::')
+          `)
 
-          core.info('::group::glob')
-          core.info(JSON.stringify(glob, null, 4))
-          core.info('::endgroup::')
-
-          core.info('::group::io')
-          core.info(JSON.stringify(io, null, 4))
-          core.info('::endgroup::')
-
-          core.info('::group::exec')
-          core.info(JSON.stringify(exec, null, 4))
-          core.info('::endgroup::')
+          await printObject('github', github)
+          await printObject('context', context)
+          await printObject('core', core)
+          await printObject('glob', glob)
+          await printObject('io', io)
+          await printObject('exec', exec)
