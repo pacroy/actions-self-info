@@ -17,7 +17,7 @@ runs:
         echo '::group::github'
         echo "${context_github}"
         echo '::endgroup::'
-        {
+
           cat <<EOF
           <details>
           <summary>context</summary>
@@ -29,7 +29,7 @@ runs:
           </details>
 
           EOF
-        } >> "$GITHUB_STEP_SUMMARY"
+
 
         context_env='${{ toJSON(env) }}'
         echo '::group::env'
