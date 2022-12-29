@@ -12,9 +12,22 @@ runs:
           core.info(JSON.stringify(github, null, 4))
           core.info('::endgroup::')
 
+          const contextAttrs = JSON.stringify(context, null, 4)
           core.info('::group::context')
-          core.info(JSON.stringify(context, null, 4))
+          core.info(contextAttrs)
           core.info('::endgroup::')
+          await core.summary.addRaw(`
+          # context
+
+          <details>
+          <summary>context object attributes</summary>
+
+          \`\`\`
+          $(contextAttrs)
+          \`\`\`
+
+          </details>
+          `)
 
           core.info('::group::core')
           core.info(JSON.stringify(core, null, 4))
