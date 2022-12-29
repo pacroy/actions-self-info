@@ -9,7 +9,7 @@ runs:
       run: |
         #============================== Print Context Variables ==============================
         echo '::group::github'
-        echo '${{ github }}'
+        echo '${{ toJSON(github) }}'
         echo '::endgroup::'
     - name: 'Print JS Objects'
       uses: actions/github-script@v6
