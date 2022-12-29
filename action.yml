@@ -8,8 +8,59 @@ runs:
       shell: bash
       run: |
         #============================== Print Context Variables ==============================
+        context_github='${{ toJSON(github) }}'
         echo '::group::github'
-        echo '${{ toJSON(github) }}'
+        echo "${context_github}"
+        echo '::endgroup::'
+
+        context_env='${{ toJSON(env) }}'
+        echo '::group::env'
+        echo "${context_env}"
+        echo '::endgroup::'
+
+        context_job='${{ toJSON(job) }}'
+        echo '::group::job'
+        echo "${context_job}"
+        echo '::endgroup::'
+
+        context_jobs='${{ toJSON(jobs) }}'
+        echo '::group::jobs'
+        echo "${context_jobs}"
+        echo '::endgroup::'
+
+        context_steps='${{ toJSON(steps) }}'
+        echo '::group::steps'
+        echo "${context_steps}"
+        echo '::endgroup::'
+
+        context_runner='${{ toJSON(runner) }}'
+        echo '::group::runner'
+        echo "${context_runner}"
+        echo '::endgroup::'
+
+        context_secrets='${{ toJSON(secrets) }}'
+        echo '::group::secrets'
+        echo "${context_secrets}"
+        echo '::endgroup::'
+
+        context_strategy='${{ toJSON(strategy) }}'
+        echo '::group::strategy'
+        echo "${context_strategy}"
+        echo '::endgroup::'
+
+        context_matrix='${{ toJSON(matrix) }}'
+        echo '::group::matrix'
+        echo "${context_matrix}"
+        echo '::endgroup::'
+
+        context_needs='${{ toJSON(needs) }}'
+        echo '::group::needs'
+        echo "${context_needs}"
+        echo '::endgroup::'
+
+        context_inputs='${{ toJSON(inputs) }}'
+        echo '::group::inputs'
+        echo "${context_inputs}"
         echo '::endgroup::'
     - name: 'Print JS Objects'
       uses: actions/github-script@v6
