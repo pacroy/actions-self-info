@@ -8,8 +8,8 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    name: Lint Code Base
+  happy_path:
+    name: 'Happy Path'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout self'
