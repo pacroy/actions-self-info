@@ -8,6 +8,26 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
+          core.info('::group::github')
+          core.info(JSON.stringify(github, null, 4))
+          core.info('::endgroup::')
+
           core.info('::group::context')
           core.info(JSON.stringify(context, null, 4))
+          core.info('::endgroup::')
+
+          core.info('::group::core')
+          core.info(JSON.stringify(core, null, 4))
+          core.info('::endgroup::')
+
+          core.info('::group::glob')
+          core.info(JSON.stringify(glob, null, 4))
+          core.info('::endgroup::')
+
+          core.info('::group::io')
+          core.info(JSON.stringify(io, null, 4))
+          core.info('::endgroup::')
+
+          core.info('::group::exec')
+          core.info(JSON.stringify(exec, null, 4))
           core.info('::endgroup::')
