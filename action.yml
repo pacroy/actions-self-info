@@ -8,28 +8,31 @@ runs:
       shell: bash
       run: |
         #============================== Print Context Variables ==============================
+        function print_variable {
+          echo '::group::$1'
+          echo "$2"
+          echo '::endgroup::'
+          {
+          cat <<EOF
+          <details>
+          <summary>$1</summary>
+
+          \`\`\`json
+          $2
+          \`\`\`
+
+          </details>
+
+          EOF
+          } >> "$GITHUB_STEP_SUMMARY"
+        }
+
         { 
           echo '# Context Variables'
           echo
         } >> "$GITHUB_STEP_SUMMARY"
 
-        context_github='${{ toJSON(github) }}'
-        echo '::group::github'
-        echo "${context_github}"
-        echo '::endgroup::'
-        {
-        cat <<EOF
-        <details>
-        <summary>context</summary>
-
-        \`\`\`json
-        $context_github
-        \`\`\`
-
-        </details>
-
-        EOF
-        } >> "$GITHUB_STEP_SUMMARY"
+        print_variable 'github' '${{ toJSON(github) }}'
 
         context_env='${{ toJSON(env) }}'
         echo '::group::env'
